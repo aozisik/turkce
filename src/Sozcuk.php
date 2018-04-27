@@ -59,13 +59,13 @@ class Sozcuk
 
     public function kucuk()
     {
-        $str = str_replace(['i', 'I'], ['İ', 'ı'], $str);
+        $str = str_replace(['i', 'I'], ['İ', 'ı'], $this->soz);
         return mb_strtolower($str, 'UTF-8');
     }
 
     public function buyuk()
     {
-        $str = str_replace(['i', 'I'], ['İ', 'ı'], $str);
+        $str = str_replace(['i', 'I'], ['İ', 'ı'], $this->soz);
         return mb_strtoupper($str, 'UTF-8');
     }
 
