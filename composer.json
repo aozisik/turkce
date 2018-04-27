@@ -1,0 +1,23 @@
+{
+    "name": "aozisik/php-turkce",
+    "description": "Türkçe hal ekleri, büyük küçük harf dönüşümü",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ahmet Özışık",
+            "email": "ozisikahmet@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aozisik\\Turkce\\": "src/"
+        },
+        "files": [
+            "src/__register.php"
+        ]
+    }
+}
