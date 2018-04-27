@@ -6,7 +6,7 @@ Sözcükleri veya özel isimleri Türkçe'ye uygun olarak ismin 5 haline çekiml
 
 ## Kurulum
 
-    composer require aozisik/turkce
+    composer require aozisik/php-turkce
 
 Autoload özelliğiniz açıksa, global olarak kullanabileceğiniz bir tr($sozcuk) fonksiyonu tanımlanacaktır (eğer boşta ise). Bu helper olmadan kullanabilmek için `new \Aozisik\Turkce\Cekimleyici($sozcuk)` yapabilirsiniz.
 
