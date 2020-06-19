@@ -12,7 +12,7 @@ Autoload özelliğiniz açıksa, global olarak kullanabileceğiniz bir tr($sozcu
 
 ## İyelik ve Hâl Ekleri
 
-İsimlerin yanına gelen ekleri koda gömdüğünüzde "Ahmet'nin" veya "Hikmet'ye" gibi Türkçe'ye uygun olmayan ve hiç doğal gözükmeyen bir sonuç elde edersiniz. Bu pakette gelen `ek` fonksiyonu tam olarak bu sorunu çözer.
+İsimlerin yanına gelen ekleri koda gömdüğünüzde "Ahmet'nin" veya "Hikmet'ye" gibi Türkçe'ye uygun olmayan ve hiç doğal gözükmeyen bir sonuç elde edersiniz. Bu pakette gelen `tr` fonksiyonu tam olarak bu sorunu çözer.
 
 	tr('İstanbul')->den(); // "İstanbul'dan"
 	tr('Hatice')->i(); // "Hatice'yi"
