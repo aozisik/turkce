@@ -1,37 +1,65 @@
-PHP Türkçe Paketi 🇹🇷
-==========
+# PHP Türkçe Paketi 🇹🇷
 
-Herhangi bir framework'e bağlı olmayan, kullanımı basit ufak bir dil kütüphanesi.
-Sözcükleri veya özel isimleri Türkçe'ye uygun olarak ismin 5 haline çekimlemenizi sağlar ve büyük - küçük harf dönüşümü yapar.
+![](https://github.com/aozisik/turkce/workflows/run-tests/badge.svg)
+
+## Ne yapar?
+
+- Türkçe sözcüğün içindeki harfleri bozmadan büyültür/küçültür veya başlık yapar.
+
+- Verilen Türkçe sözcüğü veya özel ismi, istenen eke göre çekimler. (-e, -i, -in, -de, -den)
 
 ## Kurulum
 
     composer require aozisik/php-turkce
 
-Autoload özelliğiniz açıksa, global olarak kullanabileceğiniz bir tr($sozcuk) fonksiyonu tanımlanacaktır (eğer boşta ise). Bu helper olmadan kullanabilmek için `new \Aozisik\Turkce\Sozcuk($sozcuk)` yapabilirsiniz.
+## Kullanım
 
-## İyelik ve Hâl Ekleri
+### Sözcükleri Büyültme/Küçültme ve Başlık Yapma
 
-İsimlerin yanına gelen ekleri koda gömdüğünüzde "Ahmet'nin" veya "Hikmet'ye" gibi Türkçe'ye uygun olmayan ve hiç doğal gözükmeyen bir sonuç elde edersiniz. Bu pakette gelen `tr` fonksiyonu tam olarak bu sorunu çözer.
+PHP'de `strtoupper` ve `strtolower` fonksiyonları Türkçe ile uyumsuzdur. Yerine tavsiye edilen `mb_strtoupper` ve `mb_strtolower` ise neredeyse çalışır, ama i ve I harflerini düzgün çeviremez.
 
-	tr('İstanbul')->den(); // "İstanbul'dan"
-	tr('Hatice')->i(); // "Hatice'yi"
-	tr('Kemal')->in(); // "Kemal'in"
-	tr('Kazım')->e(); // "Kazım'a"
-	tr('Asu')->de(); // "Asu'da"
+Bu kütüphane size düzgün şekilde büyültme/küçültme yapan metotlar verir.
+
+```php
+// Normal strtoupper ile:
+strtoupper('izmirin ılık ilkbaharları'); // IZMIRIN ıLıK ILKBAHARLARı
+
+// Büyültme
+turkce('izmirin ılık ilkbaharları')->buyuk(); // İZMİRİN ILIK İLKBAHARLARI
+// veya
+tr_strtoupper('izmirin ılık ilkbaharları'); // İZMİRİN ILIK İLKBAHARLARI
+
+// Küçültme
+turkce('İZMİRİN ILIK İLKBAHARLARI')->kucuk(); // izmirin ılık ilkbaharları
+// veya
+tr_strtolower('İZMİRİN ILIK İLKBAHARLARI'); // izmirin ılık ilkbaharları
+
+// Başlık
+turkce('İZMİRİN ILIK İLKBAHARLARI')->baslik(); // İzmirin Ilık İlkbaharları
+```
+
+### İsmin Hallerine Çekimleme
+
+İsimlerin yanına gelen ekleri koda gömersek "Ahmet'nin" veya "Hikmet'ye" gibi Türkçe'ye uygun olmayan ve hiç doğal gözükmeyen bir sonuç elde ederiz. Onun yerine, bırakın Türkçe paketi ismi uygun haline çeksin.
+
+```php
+turkce('İstanbul')->den(); // "İstanbul'dan"
+turkce('Hatice')->i(); // "Hatice'yi"
+turkce('Kemal')->in(); // "Kemal'in"
+turkce('Kazım')->e(); // "Kazım'a"
+turkce('Asu')->de(); // "Asu'da"
+```
+
+Hatta bunu bir önceki metotla da birleştirebilirsiniz:
+
+```php
+turkce('güzel istanbul')->dan()->baslik(); // "Güzel İstanbul'dan"
+```
 
 Kullanılabilen ekler:
 
-* `i` (belirtme)
-* `e` (yönelme)
-* `de` (bulunma)
-* `den` (ayrılma)
-* `in` (iyelik)
-
-## Büyük-Küçük Harf Dönüştürme
-
-I ve i harfleri büyük-küçük harfe dönüştürülürken i ve I oluyor. Bu sinir bozucu problem için üç adet fonksiyon sunuyoruz.
-
-	tr('İZMİRİN ILIK İLKBAHARLARI')->kucuk(); // izmirin ılık ilkbaharları
-	tr('izmirin ılık ilkbaharları')->buyuk(); // İZMİRİN ILIK İLKBAHARLARI
-	tr('izmirin ılık ilkbaharları')->baslik(); // İzmirin Ilık İlkbaharları
+- `i` (belirtme)
+- `e` (yönelme)
+- `de` (bulunma)
+- `den` (ayrılma)
+- `in` (iyelik)

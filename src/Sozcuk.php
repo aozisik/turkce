@@ -1,14 +1,14 @@
 <?php
+
 namespace Aozisik\Turkce;
 
 class Sozcuk
 {
     private $soz;
-    private $sonHece;
 
     public function __construct($soz)
     {
-        $this->soz = $soz;
+        $this->soz = (string) $soz;
     }
 
     public function i()
@@ -42,6 +42,11 @@ class Sozcuk
             ->sonuc();
     }
 
+    public function a()
+    {
+        return $this->e();
+    }
+
     public function de()
     {
         return Cekimleyici::yeni($this->soz)
@@ -52,26 +57,51 @@ class Sozcuk
             ->sonuc();
     }
 
+    public function da()
+    {
+        return $this->de();
+    }
+
     public function den()
     {
-        return $this->de() . 'n';
+        return new self(Cekimleyici::yeni($this->soz)
+            ->kural('sert,ince', 'ten')
+            ->kural('sert,kalin', 'tan')
+            ->kural('yumusak,ince', 'den')
+            ->kural('yumusak,kalin', 'dan')
+            ->sonuc());
+    }
+
+    public function dan()
+    {
+        return $this->den();
     }
 
     public function kucuk()
     {
         $str = str_replace(['i', 'I'], ['İ', 'ı'], $this->soz);
-        return mb_strtolower($str, 'UTF-8');
+        $str = mb_convert_case($str, MB_CASE_LOWER);
+
+        return new self(str_replace('i̇', 'i', $str));
     }
 
     public function buyuk()
     {
         $str = str_replace(['i', 'I'], ['İ', 'ı'], $this->soz);
-        return mb_strtoupper($str, 'UTF-8');
+
+        return new self(mb_convert_case($str, MB_CASE_UPPER));
     }
 
     public function baslik()
     {
         $str = str_replace(['i', 'I'], ['İ', 'ı'], $this->soz);
-        return mb_convert_case($str, MB_CASE_TITLE, 'UTF-8');
+        $str = mb_convert_case($str, MB_CASE_TITLE);
+
+        return new self(str_replace('i̇', 'i', $str));
+    }
+
+    public function __toString()
+    {
+        return $this->soz;
     }
 }
