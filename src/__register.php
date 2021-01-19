@@ -10,7 +10,7 @@ if (! function_exists('turkce')) {
 if (! function_exists('tr_strtoupper')) {
     function tr_strtoupper($sozcuk)
     {
-        return (new \Aozisik\Turkce\Sozcuk($sozcuk))
+        return (string) (new \Aozisik\Turkce\Sozcuk($sozcuk))
             ->buyuk();
     }
 }
@@ -18,7 +18,7 @@ if (! function_exists('tr_strtoupper')) {
 if (! function_exists('tr_strtolower')) {
     function tr_strtolower($sozcuk)
     {
-        return (new \Aozisik\Turkce\Sozcuk($sozcuk))
+        return (string) (new \Aozisik\Turkce\Sozcuk($sozcuk))
             ->kucuk();
     }
 }

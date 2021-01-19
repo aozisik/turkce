@@ -1,6 +1,6 @@
 # PHP Türkçe Paketi 🇹🇷
 
-## Ne yapar:
+## Ne yapar?
 
 - Türkçe sözcüğün içindeki harfleri bozmadan büyültür/küçültür veya başlık yapar.
 
@@ -14,9 +14,9 @@
 
 ### Sözcükleri Büyültme/Küçültme ve Başlık Yapma
 
-PHP'de `strtoupper` ve `strtolower` fonksiyonları, Türkçe kelimelerde çalışmaz. Yerine tavsiye edilen `mb_strtoupper` ve `mb_strtolower` ise neredeyse çalışır, ama i ve I harflerini düzgün çeviremez.
+PHP'de `strtoupper` ve `strtolower` fonksiyonları Türkçe ile uyumsuzdur. Yerine tavsiye edilen `mb_strtoupper` ve `mb_strtolower` ise neredeyse çalışır, ama i ve I harflerini düzgün çeviremez.
 
-Bu kütüphane, bu fonksiyonlarla aynı mantıkta çalışan alternatifler sunar.
+Bu kütüphane size düzgün şekilde büyültme/küçültme yapan metotlar verir.
 
 ```php
 // Normal strtoupper ile:
