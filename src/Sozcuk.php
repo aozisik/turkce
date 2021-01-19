@@ -1,10 +1,10 @@
 <?php
+
 namespace Aozisik\Turkce;
 
 class Sozcuk
 {
     private $soz;
-    private $sonHece;
 
     public function __construct($soz)
     {
@@ -60,18 +60,23 @@ class Sozcuk
     public function kucuk()
     {
         $str = str_replace(['i', 'I'], ['İ', 'ı'], $this->soz);
-        return mb_strtolower($str, 'UTF-8');
+        $str = mb_convert_case($str, MB_CASE_LOWER);
+
+        return str_replace('i̇', 'i', $str);
     }
 
     public function buyuk()
     {
         $str = str_replace(['i', 'I'], ['İ', 'ı'], $this->soz);
-        return mb_strtoupper($str, 'UTF-8');
+
+        return mb_convert_case($str, MB_CASE_UPPER);
     }
 
     public function baslik()
     {
         $str = str_replace(['i', 'I'], ['İ', 'ı'], $this->soz);
-        return mb_convert_case($str, MB_CASE_TITLE, 'UTF-8');
+        $str = mb_convert_case($str, MB_CASE_TITLE);
+
+        return str_replace('i̇', 'i', $str);
     }
 }
