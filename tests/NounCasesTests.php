@@ -2,11 +2,11 @@
 
 use PHPUnit\Framework\TestCase;
 
-class NounCasesTest extends TestCase
+class NounCasesTests extends TestCase
 {
     private function assertSuffix($expected, $word, $suffix)
     {
-        $this->assertEquals($expected, tr($word)->$suffix());
+        $this->assertEquals($expected, turkce($word)->$suffix());
     }
 
     /**
@@ -93,5 +93,16 @@ class NounCasesTest extends TestCase
         $this->assertSuffix('Şükran\'dan', 'Şükran', 'den');
         $this->assertSuffix('Kamile\'den', 'Kamile', 'den');
         $this->assertSuffix('Şefika\'dan', 'Şefika', 'den');
+    }
+
+    /**
+     * @test
+     */
+    public function den_hali_ve_baslik()
+    {
+        $this->assertEquals(
+            'Güzel İstanbul\'dan',
+            turkce('güzel istanbul')->dan()->baslik(),
+        );
     }
 }

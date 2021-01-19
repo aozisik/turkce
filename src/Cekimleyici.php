@@ -1,12 +1,11 @@
 <?php
+
 namespace Aozisik\Turkce;
 
 class Cekimleyici
 {
     private $ek;
-    private $soz;
     private $sonHece;
-    private $kaynastirma;
     private $kosulHafizasi;
 
     public static function yeni($soz)
@@ -26,6 +25,7 @@ class Cekimleyici
         if ($this->sonHece->sonHarfUnlu()) {
             $this->sonuc .= $harf;
         }
+
         return $this;
     }
 
@@ -37,25 +37,27 @@ class Cekimleyici
         }
         $kosullar = explode(',', $kosullar);
         foreach ($kosullar as $kosul) {
-            if (!$this->kosulUyumu($kosul)) {
+            if (! $this->kosulUyumu($kosul)) {
                 // Bir koşul sağlanmadığında bitir.
                 return $this;
             }
         }
         $this->ek = $ek;
+
         return $this;
     }
 
     private function kosulUyumu($kosul)
     {
-        if (!isset($this->kosulHafizasi[$kosul])) {
+        if (! isset($this->kosulHafizasi[$kosul])) {
             $this->kosulHafizasi[$kosul] = $this->sonHece->$kosul();
         }
+
         return $this->kosulHafizasi[$kosul];
     }
 
     public function sonuc()
     {
-        return $this->sonuc .= $this->ek;
+        return new Sozcuk($this->sonuc . $this->ek);
     }
 }
