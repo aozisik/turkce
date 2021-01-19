@@ -1,5 +1,7 @@
 # PHP Türkçe Paketi 🇹🇷
 
+![](https://github.com/aozisik/turkce/workflows/run-tests/badge.svg)
+
 ## Ne yapar?
 
 - Türkçe sözcüğün içindeki harfleri bozmadan büyültür/küçültür veya başlık yapar.
