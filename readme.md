@@ -57,7 +57,7 @@ turkce('Kazım')->e(); // "Kazım'a"
 turkce('Asu')->de(); // "Asu'da"
 
 // Hatta bunu diğer özelliklerle de birleştirebilirsiniz:
-turkce('güzel istanbul')->dan()->baslik(); // "Güzel İstanbul'dan"
+turkce('güzel İstanbul')->dan()->baslik(); // "Güzel İstanbul'dan"
 ```
 
 Kullanılabilen ekler:
@@ -76,7 +76,7 @@ Kullanılabilen ekler:
 
 ```php
 turkce('İstanbul')->den(); // "İstanbul'dan"
-turkce('bakkal')->dan(); // "bakkaldan"
+turkce('bakkal')->den(); // "bakkaldan"
 ```
 
 ### Sonucu string olarak dönme
@@ -84,8 +84,8 @@ turkce('bakkal')->dan(); // "bakkaldan"
 Eğer sonucu `Sozcuk` sınıfı değil, string olarak almak isterseniz aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
 ```php
-turkce('güzel istanbul')->dan()->baslik()->yap(); // (string) "Güzel İstanbul'dan"
+turkce('güzel İstanbul')->dan()->baslik()->yap(); // (string) "Güzel İstanbul'dan"
 
 // veya
-(string) turkce('güzel istanbul')->dan()->baslik(); // (string) "Güzel İstanbul'dan"
+(string) turkce('güzel İstanbul')->dan()->baslik(); // (string) "Güzel İstanbul'dan"
 ```
