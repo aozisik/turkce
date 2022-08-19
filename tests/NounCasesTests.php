@@ -102,7 +102,7 @@ class NounCasesTests extends TestCase
     {
         $this->assertEquals(
             'Güzel İstanbul\'dan',
-            turkce('güzel istanbul')->dan()->baslik(),
+            turkce('güzel istanbul')->dan()->baslik()->yap(),
         );
     }
 }

@@ -100,8 +100,13 @@ class Sozcuk
         return new self(str_replace('i̇', 'i', $str));
     }
 
-    public function __toString()
+    public function yap()
     {
         return $this->soz;
+    }
+
+    public function __toString()
+    {
+        return $this->yap();
     }
 }

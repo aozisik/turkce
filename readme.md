@@ -67,3 +67,14 @@ Kullanılabilen ekler:
 - `de` (bulunma)
 - `den` (ayrılma)
 - `in` (iyelik)
+
+### Sonucu string olarak dönme
+
+Eğer sonucu `Sozcuk` sınıfı değil, string olarak almak isterseniz aşağıdaki yöntemlerden birini kullanabilirsiniz:
+
+```php
+turkce('güzel istanbul')->dan()->baslik()->yap(); // (string) "Güzel İstanbul'dan"
+
+// veya
+(string) turkce('güzel istanbul')->dan()->baslik(); // (string) "Güzel İstanbul'dan"
+```
