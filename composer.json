@@ -1,17 +1,16 @@
 {
     "name": "aozisik/php-turkce",
-    "description": "Türkçe hal ekleri, büyük küçük harf dönüşümü",
+    "description": "Turkish language friendly string manipulation functions for PHP.",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
-            "name": "Ahmet Özışık",
-            "email": "ozisikahmet@gmail.com"
+            "name": "Ahmet ÖZIŞIK",
+            "email": "ahmet@swiftmade.co"
         }
     ],
     "require-dev": {
-        "phpunit/phpunit": "^9.0",
-        "friendsofphp/php-cs-fixer": "^2.18"
+        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "psr-4": {
