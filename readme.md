@@ -6,8 +6,6 @@
 
 <br />
 
-# PHP Türkçe Dil Paketi
-
 ![](https://github.com/aozisik/turkce/workflows/run-tests/badge.svg)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/aozisik/php-turkce.svg?style=flat-square)](https://packagist.org/packages/aozisik/php-turkce)
