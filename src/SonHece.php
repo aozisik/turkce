@@ -14,12 +14,8 @@ class SonHece
 
     public function __construct($soz)
     {
-        $soz = $this->sonSoz($soz);
-        $soz = str_replace(['i', 'I'], ['İ', 'ı'], $soz);
-        $soz = mb_strtolower($soz, 'UTF-8');
-
-        $this->soz = $soz;
-        $this->sonHarf = mb_substr($soz, -1);
+        $this->soz = tr_strtolower($this->sonSoz($soz));
+        $this->sonHarf = mb_substr($this->soz, -1);
         $this->sonUnluHarf = $this->sonUnluHarfiBul();
     }
 
@@ -64,13 +60,18 @@ class SonHece
     public function kalin()
     {
         $istisnalar = [
-            'mal',
+            'emal',
+            'ikmal',
             'lal',
             'hal',
         ];
-        // Kemal, Bilal, Zuhal gibi istisnalar için...
-        if (in_array(substr($this->soz, -3), $istisnalar)) {
-            return false;
+
+        foreach ($istisnalar as $istisna) {
+            $bitis = mb_substr($this->soz, -1 * strlen($istisna));
+
+            if ($bitis === $istisna) {
+                return false;
+            }
         }
 
         return in_array($this->sonUnluHarf, [

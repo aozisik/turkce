@@ -9,10 +9,10 @@ class LetterCaseTests extends TestCase
      */
     public function kucuk_harfe_cevir()
     {
+        $this->assertTrue('ikmal' == utf8_decode(turkce('İkmal')->kucuk()->yap()));
         $this->assertEquals('çılgın koşu', turkce('ÇIlgın KoŞu')->kucuk());
         $this->assertEquals('iyelik ekleri', turkce('İyelİk eklerİ')->kucuk());
         $this->assertEquals('ılık rüzgarlar', turkce('ıLIK RÜZGARLAR')->kucuk());
-        $this->assertEquals('izmir\'de ılık ilkbahar akşamı', turkce('İzmir\'de Ilık İlkbahar akşamı')->kucuk());
     }
 
     /**

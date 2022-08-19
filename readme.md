@@ -68,6 +68,17 @@ Kullanılabilen ekler:
 - `den` (ayrılma)
 - `in` (iyelik)
 
+#### Özel isim / genel isim ayrımı
+
+İsmin hallerine çekimlerken, kütüphane son sözcüğün baş harfini özel genel isim ayrımı yapmak için kullanır. Eğer son sözcük büyük harfle başlıyorsa, özel isim olarak kabul edilir. Bu durumda, hal ekinden önce kesme işareti kullanılır.
+
+Örneğin:
+
+```php
+turkce('İstanbul')->den(); // "İstanbul'dan"
+turkce('bakkal')->dan(); // "bakkaldan"
+```
+
 ### Sonucu string olarak dönme
 
 Eğer sonucu `Sozcuk` sınıfı değil, string olarak almak isterseniz aşağıdaki yöntemlerden birini kullanabilirsiniz:

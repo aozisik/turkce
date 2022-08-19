@@ -4,9 +4,11 @@ namespace Aozisik\Turkce;
 
 class Cekimleyici
 {
+    private $soz;
     private $ek;
     private $sonHece;
     private $kosulHafizasi;
+    private $kaynastirma = '';
 
     public static function yeni($soz)
     {
@@ -16,14 +18,14 @@ class Cekimleyici
     public function __construct($soz)
     {
         $this->kosulHafizasi = [];
-        $this->sonuc = $soz . '\'';
+        $this->soz = $soz;
         $this->sonHece = new SonHece($soz);
     }
 
     public function kaynastirma($harf)
     {
         if ($this->sonHece->sonHarfUnlu()) {
-            $this->sonuc .= $harf;
+            $this->kaynastirma = $harf;
         }
 
         return $this;
@@ -56,8 +58,24 @@ class Cekimleyici
         return $this->kosulHafizasi[$kosul];
     }
 
+    public function ozelIsimMi()
+    {
+        $sozler = explode(' ', $this->soz);
+        $sonSoz = $sozler[count($sozler) - 1];
+
+        $ilkHarf = mb_substr($sonSoz, 0, 1);
+        // Sözcüğün ilk harfi büyükse, özel isimdir.
+        return tr_strtoupper($ilkHarf) === $ilkHarf;
+    }
+
     public function sonuc()
     {
-        return new Sozcuk($this->sonuc . $this->ek);
+        return new Sozcuk(sprintf(
+            '%s%s%s%s',
+            $this->soz,
+            $this->ozelIsimMi() ? '\'' : '',
+            $this->kaynastirma,
+            $this->ek
+        ));
     }
 }
