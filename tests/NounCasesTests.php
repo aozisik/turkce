@@ -6,7 +6,7 @@ class NounCasesTests extends TestCase
 {
     private function assertSuffix($expected, $word, $suffix)
     {
-        $this->assertEquals($expected, turkce($word)->$suffix());
+        $this->assertEquals($expected, turkce($word)->$suffix()->yap());
     }
 
     /**
@@ -98,11 +98,30 @@ class NounCasesTests extends TestCase
     /**
      * @test
      */
+    public function ozel_genel_ism_ayrimi()
+    {
+        $this->assertSuffix('Kemal\'den', 'Kemal', 'den');
+        $this->assertSuffix('hammaldan', 'hammal', 'den');
+    }
+
+    /**
+     * @test
+     */
+    public function unlu_yumusamasi()
+    {
+        $this->assertSuffix('Kemal\'den', 'Kemal', 'den');
+        $this->assertSuffix('İkmal\'den', 'İkmal', 'den');
+        $this->assertSuffix('Asal\'dan', 'Asal', 'den');
+    }
+
+    /**
+     * @test
+     */
     public function den_hali_ve_baslik()
     {
         $this->assertEquals(
             'Güzel İstanbul\'dan',
-            turkce('güzel istanbul')->dan()->baslik(),
+            turkce('güzel istanbul')->baslik()->den()->yap(),
         );
     }
 }
