@@ -109,9 +109,9 @@ class NounCasesTests extends TestCase
      */
     public function unlu_yumusamasi()
     {
-        // $this->assertSuffix('Kemal\'den', 'Kemal', 'den');
+        $this->assertSuffix('Kemal\'den', 'Kemal', 'den');
         $this->assertSuffix('İkmal\'den', 'İkmal', 'den');
-        // $this->assertSuffix('Asal\'dan', 'Asal', 'den');
+        $this->assertSuffix('Asal\'dan', 'Asal', 'den');
     }
 
     /**
